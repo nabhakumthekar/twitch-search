@@ -19,21 +19,22 @@
                 <div class="col-lg-9 col-md-8 ">
                     <p>Total results: {{total}}</p>
                 </div>
-
-                <div class="col-lg-9" ng-if="emptyResult">
-                    <h2 class="heading">Ooopps.. No Results Found..</h2>
-                </div>
-            
-                <div class="col-lg-1 col-md-1">
-                    <a href="#" class="btn btn-primary" ng-click="previousPage(searchQuery)"
-                        ng-disabled="disablePrev">&#8249;</a>
-                </div>
+                <div ng-show="showNavigation">
+                    <div class="col-lg-9" ng-if="emptyResult">
+                        <h2 class="heading">Ooopps.. No Results Found..</h2>
+                    </div>
                 
-                    <p class="col-lg-1 col-md-1" style="padding-top: 1%">{{page}}/{{numberOfPages}}</p>
-              
-                <div class="col-lg-1 col-md-1 col-sm-3 col-sx-3">
-                    <a href="#" class="btn btn-primary" ng-click="nextPage(searchQuery)"
-                    ng-disabled="disableNext">&#8250;</a>
+                    <div class="col-lg-1 col-md-1">
+                        <a href="#" class="btn btn-primary" ng-click="previousPage(searchQuery)"
+                            ng-disabled="disablePrev">&#8249;</a>
+                    </div>
+                    
+                        <p class="col-lg-1 col-md-1" style="padding-top: 1%">{{page}}/{{numberOfPages}}</p>
+                  
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-sx-3">
+                        <a href="#" class="btn btn-primary" ng-click="nextPage(searchQuery)"
+                        ng-disabled="disableNext">&#8250;</a>
+                    </div>
                 </div>
         </div>
         
@@ -60,14 +61,16 @@
                 <div class="col-lg-9 col-md-8">
                     
                 </div>
-                <div class="col-lg-1 col-md-1">
-                    <a href="#" class="btn btn-primary" ng-click="previousPage(searchQuery)"
-                    ng-disabled="disablePrev">&#8249;</a>
-                </div>
-                    <p class="col-lg-1 col-md-1" style="padding-top: 1%">{{page}}/{{numberOfPages}}</p>
-                <div class="col-lg-1 col-md-1">
-                    <a href="#" class="btn btn-primary" ng-click="nextPage(searchQuery)"
-                    ng-disabled="disableNext">&#8250;</a>
+                <div ng-show="showNavigation">
+                    <div class="col-lg-1 col-md-1">
+                        <a href="#" class="btn btn-primary" ng-click="previousPage(searchQuery)"
+                        ng-disabled="disablePrev">&#8249;</a>
+                    </div>
+                        <p class="col-lg-1 col-md-1" style="padding-top: 1%">{{page}}/{{numberOfPages}}</p>
+                    <div class="col-lg-1 col-md-1">
+                        <a href="#" class="btn btn-primary" ng-click="nextPage(searchQuery)"
+                        ng-disabled="disableNext">&#8250;</a>
+                    </div>
                 </div>
         </div>
     </body>
