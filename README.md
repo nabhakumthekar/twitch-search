@@ -1,3 +1,12 @@
+
+Tools used:
+1. NodeJS
+2. Grunt
+3. Bower
+4. npm
+5. IDE:Sublime Text 3
+6. Repository GitHub
+
 Steps to run on local:
 1. npm install
 2. bower install 
