@@ -129,10 +129,6 @@ a:hover {
   max-width: 900px;
   }
 
-section:nth-child(even) {
-    background-color: white;
-}
-
 .watchBtnAling{
     padding-top: 3.5%;
     padding-left: 4px;
