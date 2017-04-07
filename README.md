@@ -1,11 +1,11 @@
-Steps to run:
+Steps to run on local:
 1. npm install
 2. bower install 
 3. grunt server
 
 Description:
 1. I have created single page web application which uses Twitch's search API.
-2. For pagination purpose I am sending offset and limit in the URl which fetches 10 records at a time.
+2. For pagination purpose I am sending offset and limit in the URL which fetches 10 records at a time.
 3. Responsive UI support is provided for ipad pro (1024 by 1366).
 
 Known issues:
