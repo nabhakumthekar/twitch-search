@@ -9,18 +9,18 @@
  */
 angular.module('twitchSearchApp',['twitchSearchService'])
   .controller('TwitchsearchCtrl', function ($scope,twitchSearchServ,$window) {
-	$scope.total = 0;
-	$scope.status;
+  $scope.total = 0;
   $scope.currentPage = 1;
-  $scope.query;
   $scope.page = 1;
   $scope.numberOfPages=1;
   $scope.emptyResult= false;
   $scope.disablePrev = true;
   $scope.disableNext = true;
 
+  /*Following function requests for new data according to query
+  this function also checks if to disable next - previous buttons, number of pages etc */
+
   $scope.getSearchData = function(searchQuery){
-    console.log(searchQuery); 
         if(searchQuery == null){
             $scope.errorShow = true;
         }else if(searchQuery == ''){
@@ -37,58 +37,58 @@ angular.module('twitchSearchApp',['twitchSearchService'])
                       $scope.emptyResult = false;
                 }
                 angular.forEach($scope.streams, function(value, key){
-                 if (value.channel.logo == null){
-                    value.channel.logo = "/images/noimage.jpeg"
-                 }
+                   if (value.channel.logo == null){
+                      value.channel.logo = "/images/noimage.jpeg"
+                   }
                  });
                 $scope.numberOfPages = Math.ceil($scope.total/10);
-                    if($scope.page == 1){
-                      $scope.disablePrev = true;
-                    }else{
-                      $scope.disablePrev = false;
-                    }
-                    if($scope.page == $scope.numberOfPages){
-                       $scope.disableNext = true;
-                    }else{
-                       $scope.disableNext = false;
-                    }
+                 if($scope.page == 1){
+                    $scope.disablePrev = true;
+                   }else{
+                    $scope.disablePrev = false;
+                   }
 
+                  if($scope.page == $scope.numberOfPages){
+                     $scope.disableNext = true;
+                   }else{
+                     $scope.disableNext = false;
+                   }
             });
         } 
   }
 
-  $scope.previousPage = function (searchQuery) {
-   if(!searchQuery == null || !searchQuery == '' ){
-     $scope.errorShow = false;
-    if($scope.page == 1){
-      $scope.disablePrev = true;
-    }else{
-      if($scope.page!=0){
-        $scope.disablePrev = false;
-          $scope.page-=1;
-          $scope.getSearchData(searchQuery);
+    $scope.previousPage = function (searchQuery) {
+       if(!searchQuery == null || !searchQuery == '' ){
+         $scope.errorShow = false;
+        if($scope.page == 1){
+          $scope.disablePrev = true;
+        }else{
+          if($scope.page!=0){
+            $scope.disablePrev = false;
+              $scope.page-=1;
+              $scope.getSearchData(searchQuery);
+          }
+        }
+      }else{
+         $scope.errorShow = true;
       }
+    };
+    $scope.nextPage = function (searchQuery) {
+      if(!searchQuery == null || !searchQuery == '' ){
+          $scope.errorShow = false;
+          $scope.disablePrev = false;
+          if($scope.page == $scope.numberOfPages){
+              $scope.disableNext = true;
+          }else{
+             $scope.page+=1;
+             $scope.getSearchData(searchQuery);
+          }
+        }else{
+           $scope.errorShow = true;
+        }
+    };
+    $scope.watchStream = function(url){
+       $window.open(url);
     }
-  }else{
-     $scope.errorShow = true;
-  }
-  };
-  $scope.nextPage = function (searchQuery) {
-  if(!searchQuery == null || !searchQuery == '' ){
-     $scope.errorShow = false;
-      $scope.disablePrev = false;
-    if($scope.page == $scope.numberOfPages){
-        $scope.disableNext = true;
-    }else{
-       $scope.page+=1;
-       $scope.getSearchData(searchQuery);
-    }
-    }else{
-       $scope.errorShow = true;
-    }
-  };
-  $scope.watchStream = function(url){
-     $window.open(url);
-  }
  
   });
