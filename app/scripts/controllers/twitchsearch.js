@@ -16,11 +16,13 @@ angular.module('twitchSearchApp',['twitchSearchService'])
   $scope.emptyResult= false;
   $scope.disablePrev = true;
   $scope.disableNext = true;
+  $scope.showNavigation = false;
 
   /*Following function requests for new data according to query
   this function also checks if to disable next - previous buttons, number of pages etc */
 
   $scope.getSearchData = function(searchQuery){
+     $scope.showNavigation = true;
         if(searchQuery == null){
             $scope.errorShow = true;
         }else if(searchQuery == ''){
@@ -32,9 +34,11 @@ angular.module('twitchSearchApp',['twitchSearchService'])
                 $scope.total = studs.data._total;
                 $scope.streams = studs.data.streams;
                 if($scope.streams == 0){
-                  $scope.emptyResult = true;
+                   $scope.emptyResult = true;
                 }else{
+
                       $scope.emptyResult = false;
+
                 }
                 angular.forEach($scope.streams, function(value, key){
                    if (value.channel.logo == null){
