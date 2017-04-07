@@ -1,78 +1,78 @@
 <!doctype html>
 <html>
-<form name="mySearch">
-    <body ng-app="twitchSearchApp">
-        <div class="row">
-            <h2 class="heading">TWITCH.TV SEARCH STREAM</h2>
-            <div class="col-lg-4 col-md-8 search-header">
-                <input class="form-control searchArea" placeholder="Search query..." 
-                ng-model="searchQuery" ng-change="getSearchData(searchQuery)"/>
-                <span class = "error-message" ng-show="errorShow">Please enter your query</span>
-            </div>
-            <div class="col-lg-4 col-md-8 search-header">
+    <form name="mySearch">
+        <body ng-app="twitchSearchApp">
+            <div class="row">
+                <h2 class="heading">TWITCH.TV SEARCH STREAM</h2>
+                <div class="col-lg-4 col-md-8 search-header">
+                    <input class="form-control searchArea" placeholder="Search query..."
+                    ng-model="searchQuery" ng-change="getSearchData(searchQuery)"/>
+                    <span class = "error-message" ng-show="errorShow">Please enter your query</span>
+                </div>
+                <div class="col-lg-4 col-md-8 search-header">
                     <button class="btn btn-primary" ng-click="getSearchData(searchQuery)">Search</button>
+                </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="search-container"></div>
-                <div class="col-lg-9 col-md-8 ">
+            
+            <div class="row">
+                <div class="search-container"></div>
+                <div class="col-lg-9 col-md-8 " ng-hide="emptyResult">
                     <p>Total results: {{total}}</p>
                 </div>
-                <div ng-show="showNavigation">
-                    <div class="col-lg-9" ng-if="emptyResult">
-                        <h2 class="heading">Ooopps.. No Results Found..</h2>
-                    </div>
                 
+                <div class="col-lg-9" ng-if="emptyResult">
+                    <h2 class="heading">Ooopps.. No Results Found..</h2>
+                </div>
+                <div ng-show="showNavigation">
                     <div class="col-lg-1 col-md-1">
                         <a href="#" class="btn btn-primary" ng-click="previousPage(searchQuery)"
                             ng-disabled="disablePrev">&#8249;</a>
                     </div>
                     
-                        <p class="col-lg-1 col-md-1" style="padding-top: 1%">{{page}}/{{numberOfPages}}</p>
-                  
+                    <p class="col-lg-1 col-md-1" style="padding-top: 1%">{{page}}/{{numberOfPages}}</p>
+                    
                     <div class="col-lg-1 col-md-1 col-sm-3 col-sx-3">
                         <a href="#" class="btn btn-primary" ng-click="nextPage(searchQuery)"
-                        ng-disabled="disableNext">&#8250;</a>
+                            ng-disabled="disableNext">&#8250;</a>
                     </div>
                 </div>
-        </div>
-        
-        <div class="back" ng-repeat="data in streams">
-            <section class=" row content-alignment" >
-                <div class="col-lg-3 col-md-4">
-                    <img class="img-alignment" ng-src="{{data.channel.logo}}"></img>
-                </div>
-                
-                <div class="col-lg-7 col-md-4">
-                    <p>Name : {{data.channel.display_name}}<p>
-                    <p>{{data.channel.name}} -  {{data.viewers}}  viewers<p>
-                    <p>Language :  {{data.channel.language}}<p>
-                </div>
-
-                <div class="col-lg-2 col-md-4 watchBtnAling">
-                    <button class="btn btn-primary" ng-click="watchStream(data.channel.url)">Watch</button>
-                </div>
-            </section>
-        </div>
-
-        <div class="row">
-            <div class="search-footer"></div>
+            </div>
+            
+            <div class="back" ng-repeat="data in streams">
+                <section class=" row content-alignment" >
+                    <div class="col-lg-3 col-md-4">
+                        <img class="img-alignment" ng-src="{{data.channel.logo}}"></img>
+                    </div>
+                    
+                    <div class="col-lg-7 col-md-4">
+                        <p>Name : {{data.channel.display_name}}<p>
+                        <p>{{data.channel.name}} -  {{data.viewers}}  viewers<p>
+                        <p>Language :  {{data.channel.language}}<p>
+                    </div>
+                    
+                    <div class="col-lg-2 col-md-4 watchBtnAling">
+                        <button class="btn btn-primary" ng-click="watchStream(data.channel.url)">Watch</button>
+                    </div>
+                </section>
+            </div>
+            
+            <div class="row">
+                <div class="search-footer"></div>
                 <div class="col-lg-9 col-md-8">
                     
                 </div>
                 <div ng-show="showNavigation">
                     <div class="col-lg-1 col-md-1">
                         <a href="#" class="btn btn-primary" ng-click="previousPage(searchQuery)"
-                        ng-disabled="disablePrev">&#8249;</a>
+                            ng-disabled="disablePrev">&#8249;</a>
                     </div>
-                        <p class="col-lg-1 col-md-1" style="padding-top: 1%">{{page}}/{{numberOfPages}}</p>
+                    <p class="col-lg-1 col-md-1" style="padding-top: 1%">{{page}}/{{numberOfPages}}</p>
                     <div class="col-lg-1 col-md-1">
                         <a href="#" class="btn btn-primary" ng-click="nextPage(searchQuery)"
-                        ng-disabled="disableNext">&#8250;</a>
+                            ng-disabled="disableNext">&#8250;</a>
                     </div>
                 </div>
-        </div>
-    </body>
-</form>
+            </div>
+        </body>
+    </form>
 </html>
