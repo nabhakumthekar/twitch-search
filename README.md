@@ -1,5 +1,4 @@
-
-Tools used:
+Requisites:
 1. NodeJS
 2. Grunt
 3. Bower
@@ -19,6 +18,7 @@ Description:
 
 Known issues:
 1. For pagination purpose I am requesting server with new offset and limit value. However every time response
-gives different number of totals. Hence there will be change in total and number of pages every time request
-is made by using next page button.
-2. Description was not available in the response body hence I am showing "stream-name", "viewers" ,"logo" & "language" parameters.
+   gives different number of totals. Hence there will be change in total and number of pages every time request
+   is made by using next page button.
+2. Description was not available in the response body hence I am showing "stream-name", "viewers" ,"logo" & "language"
+   parameters.
