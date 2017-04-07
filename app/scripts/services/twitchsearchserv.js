@@ -10,8 +10,8 @@
 
 var app = angular.module('twitchSearchService',[]);
 app.service('twitchSearchServ', ['$http', function ($http){
-	//var searchData ={}
-
+	
+	/*offset for pagination purpose is calculated here*/
 	this.getSearchData = function(query,page){
 	
 	if(curentPage < page){
