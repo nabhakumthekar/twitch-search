@@ -1,3 +1,8 @@
+I have deployed this application on Heroku
+
+URL:  http://hidden-mesa-60488.herokuapp.com/
+
+
 Requisites:
 1. AngularJS 1.4
 2. NodeJS
